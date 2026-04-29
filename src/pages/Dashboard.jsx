@@ -69,7 +69,7 @@ const Dashboard = () => {
           </div>
           <span>Happy Stay</span>
         </div>
-        
+
         <nav style={{ flex: 1 }}>
           {navItems.map((item) => (
             <Link
@@ -91,7 +91,7 @@ const Dashboard = () => {
 
       <main className="main-content">
         <header className="dashboard-header">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <span className="section-tag">{getGreeting()}</span>
               <h1>{data?.studentName?.split(' ')[0] || 'Welcome Home'} 👋</h1>
