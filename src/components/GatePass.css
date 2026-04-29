@@ -1,0 +1,26 @@
+.status-dot-container {
+  padding: 32px;
+  background: #000;
+  color: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.status-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+
+.status-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.log-table-container {
+  margin-top: 40px;
+}

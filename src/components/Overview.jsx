@@ -1,48 +1,83 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { CreditCard, Home, Activity, CheckCircle2 } from 'lucide-react';
+import './Overview.css';
 
 const Overview = () => {
   const { data } = useOutletContext();
   
+  const stats = [
+    {
+      label: 'Monthly Rent',
+      value: `₹${data?.monthlyRent || '0.00'}`,
+      icon: <CreditCard size={18} />,
+      subtext: 'Next billing on 1st of month',
+      color: 'var(--primary)'
+    },
+    {
+      label: 'Room & Bed',
+      value: `${data?.roomNumber || 'N/A'} - ${data?.bedNumber || 'N/A'}`,
+      icon: <Home size={18} />,
+      subtext: data?.floorName || 'Standard Floor',
+      color: 'var(--accent)'
+    },
+    {
+      label: 'Total Payments',
+      value: `${data?.totalPayments || 0}`,
+      icon: <CheckCircle2 size={18} />,
+      subtext: 'Successful transactions',
+      color: 'var(--warning)'
+    }
+  ];
+
   return (
-    <div>
-      <h2 style={{ fontSize: '1.5rem', marginBottom: '24px' }}>Dashboard Overview</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-        <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '24px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
-          <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '8px' }}>Monthly Rent</div>
-          <div style={{ fontSize: '2rem', fontWeight: '700', color: 'var(--accent-color)' }}>
-            ${data?.monthlyRent || '0.00'}
+    <div className="overview-container animate-fade-in">
+      <div className="stats-grid">
+        {stats.map((stat, i) => (
+          <div key={i} className="premium-card stat-card">
+            <div className="stat-label">
+              <span style={{ color: stat.color }}>{stat.icon}</span>
+              {stat.label}
+            </div>
+            <div className="stat-value" style={{ color: stat.color === 'var(--primary)' ? '#fff' : 'inherit' }}>
+              {stat.value}
+            </div>
+            <div className="stat-subtext">{stat.subtext}</div>
           </div>
-        </div>
-        <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '24px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
-          <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '8px' }}>Room & Bed</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>
-            {data?.roomNumber} - {data?.bedNumber}
-          </div>
-          <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>{data?.floorName}</div>
-        </div>
-        <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '24px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
-          <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '8px' }}>Total Payments</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>{data?.totalPayments || 0} Transactions</div>
-        </div>
+        ))}
       </div>
 
-      <h3 style={{ fontSize: '1.2rem', marginBottom: '16px' }}>Recent Activity</h3>
-      <div style={{ background: 'rgba(15, 23, 42, 0.4)', borderRadius: '12px', border: '1px solid var(--surface-border)', padding: '16px' }}>
-        {data?.recentPayments?.length > 0 ? (
-          data.recentPayments.map((p, i) => (
-            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '12px', borderBottom: i < data.recentPayments.length - 1 ? '1px solid var(--surface-border)' : 'none' }}>
-              <span>Payment received</span>
-              <span style={{ color: 'var(--accent-color)', fontWeight: '600' }}>+${p.amount}</span>
+      <div className="recent-activity-section">
+        <h3 className="section-title">
+          <Activity size={22} className="text-primary" />
+          Recent Activity
+        </h3>
+        
+        <div className="activity-list">
+          {data?.recentPayments?.length > 0 ? (
+            data.recentPayments.map((p, i) => (
+              <div key={i} className="activity-item">
+                <div className="activity-info">
+                  <div className="activity-icon">
+                    <CreditCard size={20} />
+                  </div>
+                  <div>
+                    <div className="activity-main-text">Rent Payment Received</div>
+                    <div className="activity-date">Processed on {new Date().toLocaleDateString()}</div>
+                  </div>
+                </div>
+                <div className="activity-amount">+₹{p.amount}</div>
+              </div>
+            ))
+          ) : (
+            <div className="premium-card" style={{ textAlign: 'center', padding: '40px', color: 'var(--text-dim)' }}>
+              No recent activity found.
             </div>
-          ))
-        ) : (
-          <div style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '20px' }}>No recent payments found</div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
 export default Overview;
-

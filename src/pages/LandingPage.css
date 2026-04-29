@@ -1,0 +1,125 @@
+.landing-container {
+  background: #fff;
+}
+
+.lux-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 6%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.lux-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: #000;
+}
+
+.lux-hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+  background: #fdfdfd;
+}
+
+.lux-hero h1 {
+  font-size: 8rem;
+  line-height: 0.9;
+  margin-bottom: 40px;
+  max-width: 1200px;
+}
+
+.lux-hero p {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 60px;
+  font-weight: 300;
+}
+
+.img-reveal-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 700px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin: 100px auto;
+  position: relative;
+}
+
+.lux-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2s ease;
+}
+
+.img-reveal-container:hover .lux-full-img {
+  transform: scale(1.1);
+}
+
+.luxury-section {
+  padding: 160px 10%;
+}
+
+.section-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent-gold);
+  margin-bottom: 24px;
+  display: block;
+  font-weight: 700;
+}
+
+.lux-title {
+  font-size: 4.5rem;
+  line-height: 1;
+  margin-bottom: 60px;
+}
+
+.lux-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.lux-card {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.lux-card-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 32px;
+}
+
+.lux-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.lux-card-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .lux-hero h1 { font-size: 4rem; }
+  .lux-title { font-size: 3rem; }
+  .lux-grid { grid-template-columns: 1fr; }
+}

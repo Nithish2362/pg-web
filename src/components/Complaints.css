@@ -1,0 +1,41 @@
+.complaint-form {
+  max-width: 800px;
+}
+
+.complaint-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 32px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  outline: none;
+  transition: var(--transition);
+  margin-bottom: 32px;
+}
+
+.complaint-textarea:focus {
+  background: #fff;
+  border-color: #000;
+  box-shadow: var(--shadow-lg);
+}
+
+.complaint-card {
+  padding: 40px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: var(--transition);
+}
+
+.complaint-card:hover {
+  background: #fafafa;
+}
+
+.admin-remark-box {
+  margin-top: 24px;
+  padding: 32px;
+  background: #fdfdfd;
+  border-left: 4px solid #000;
+  border-radius: 4px 16px 16px 4px;
+}

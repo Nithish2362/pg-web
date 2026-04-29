@@ -1,0 +1,61 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 80px;
+  text-align: center;
+}
+
+.login-header {
+  margin-bottom: 48px;
+}
+
+.lux-logo-mark {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.login-input {
+  width: 100%;
+  padding: 18px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #f0f0f0;
+  font-size: 1.1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  outline: none;
+}
+
+.login-input:focus {
+  border-bottom-color: #000;
+}
+
+.error-banner {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
