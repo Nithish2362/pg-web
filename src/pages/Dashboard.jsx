@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { LogOut, User, CreditCard, LayoutDashboard, Loader2, AlertTriangle, Bell, Clock, Users, ShieldCheck } from 'lucide-react';
+import { LogOut, User, CreditCard, LayoutDashboard, Loader2, AlertTriangle, Bell, Clock, Users, ShieldCheck, Home } from 'lucide-react';
 import { fetchDashboard } from '../api/api';
 import './Dashboard.css';
 
@@ -45,18 +45,30 @@ const Dashboard = () => {
     { path: '/dashboard/visitors', label: 'Visitors', icon: <Users size={18} /> },
   ];
 
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 17) return 'Good Afternoon';
+    return 'Good Evening';
+  };
+
   if (loading) {
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff' }}>
-        <Loader2 className="animate-spin" size={32} color="#000" />
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-page)' }}>
+        <Loader2 className="animate-spin" size={32} color="var(--primary)" />
       </div>
     );
   }
 
   return (
-    <div className="dashboard-layout reveal">
+    <div className="dashboard-layout">
       <aside className="sidebar">
-        <div className="sidebar-logo">STAYPRO.</div>
+        <div className="sidebar-logo">
+          <div style={{ background: 'var(--primary)', color: 'white', padding: '6px', borderRadius: '8px', display: 'flex' }}>
+            <Home size={18} />
+          </div>
+          <span>Happy Stay</span>
+        </div>
         
         <nav style={{ flex: 1 }}>
           {navItems.map((item) => (
@@ -66,35 +78,35 @@ const Dashboard = () => {
               className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
             >
               {item.icon}
-              {item.label}
+              <span>{item.label}</span>
             </Link>
           ))}
         </nav>
 
-        <button onClick={handleLogout} className="nav-item" style={{ marginTop: 'auto', border: 'none', background: 'transparent', cursor: 'pointer', color: '#f87171' }}>
+        <button onClick={handleLogout} className="nav-item" style={{ marginTop: 'auto', border: 'none', background: 'transparent', cursor: 'pointer', color: 'var(--danger)' }}>
           <LogOut size={18} />
-          Sign Out
+          <span>Sign Out</span>
         </button>
       </aside>
 
       <main className="main-content">
         <header className="dashboard-header">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div>
-              <span className="section-tag" style={{ marginBottom: '8px' }}>Resident Account</span>
-              <h1 style={{ fontSize: '2.5rem', fontWeight: '800' }}>{data?.studentName || 'Welcome'}</h1>
+              <span className="section-tag">{getGreeting()}</span>
+              <h1>{data?.studentName?.split(' ')[0] || 'Welcome Home'} 👋</h1>
             </div>
 
             <div className="user-profile">
               <div className="avatar" style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem' }}>
                 {(data?.studentName || 'T').charAt(0).toUpperCase()}
               </div>
-              <span style={{ fontWeight: '700', fontSize: '0.85rem' }}>{pgNumber}</span>
+              <span style={{ fontWeight: '700', fontSize: '0.85rem', color: 'var(--text-main)' }}>{pgNumber}</span>
             </div>
           </div>
         </header>
 
-        <section>
+        <section className="animate-fade-in">
           <Outlet context={{ data }} />
         </section>
       </main>

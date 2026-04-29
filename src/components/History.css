@@ -1,81 +1,98 @@
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .detail-item {
-  padding: 40px;
-  background: #fff;
-  border: 1px solid #f0f0f0;
-  border-radius: 20px;
+  padding: 32px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #f1f5f9;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 20px;
   transition: var(--transition);
 }
 
 .detail-item:hover {
-  border-color: #000;
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
 }
 
 .detail-icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  background: #000;
-  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--primary-light);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .detail-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #999;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
 }
 
 .detail-value {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  color: #000;
+  color: var(--text-main);
 }
 
-/* Ledger / Payments Table */
+/* Modern Data Table */
+.premium-table-container {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+  margin-top: 32px;
+}
+
 .premium-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 40px;
 }
 
 .premium-table th {
   text-align: left;
-  padding: 24px 0;
-  font-size: 0.75rem;
+  padding: 20px 24px;
+  font-size: 0.8rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #999;
-  border-bottom: 2px solid #000;
+  color: var(--text-muted);
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .premium-table td {
-  padding: 32px 0;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 1rem;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: var(--text-main);
 }
 
-.payment-status-pill {
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 0.7rem;
+.premium-table tr:hover {
+  background: #f8fafc;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
-.pay-SUCCESS { background: #f0fdf4; color: #16a34a; }
-.pay-PENDING { background: #fffbeb; color: #d97706; }
+.status-SUCCESS { background: #dcfce7; color: #166534; }
+.status-PENDING { background: #fef9c3; color: #854d0e; }
+.status-FAILED { background: #fee2e2; color: #991b1b; }

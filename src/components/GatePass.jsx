@@ -53,12 +53,13 @@ const GatePass = () => {
           </div>
         </div>
 
-        <div className="action-controls">
+        <div className="action-controls" style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
           {isCurrentlyOut ? (
             <button
               onClick={() => handleAction("in")}
               disabled={loading}
-              className="gate-btn gate-btn-in"
+              className="btn-premium"
+              style={{ padding: '20px 60px', fontSize: '1.2rem' }}
             >
               {loading ? "Processing..." : <><LogIn size={24} /> Log Return</>}
             </button>
@@ -66,7 +67,8 @@ const GatePass = () => {
             <button
               onClick={() => handleAction("out")}
               disabled={loading}
-              className="gate-btn gate-btn-out"
+              className="btn-premium"
+              style={{ padding: '20px 60px', fontSize: '1.2rem' }}
             >
               {loading ? "Processing..." : <><LogOut size={24} /> Log Departure</>}
             </button>

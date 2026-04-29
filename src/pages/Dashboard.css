@@ -1,75 +1,103 @@
 .dashboard-layout {
   display: flex;
-  background: #fff;
   min-height: 100vh;
+  background: var(--bg-page);
 }
 
 .sidebar {
   width: 280px;
-  background: #fff;
-  border-right: 1px solid #f0f0f0;
-  padding: 40px 24px;
+  background: white;
+  border-right: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
+  padding: 32px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .sidebar-logo {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 60px;
-  padding-left: 16px;
+  color: var(--primary);
+  margin-bottom: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .nav-item {
-  color: #666;
-  padding: 14px 20px;
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 0.95rem;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--text-muted);
   text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
   transition: var(--transition);
   margin-bottom: 4px;
 }
 
 .nav-item:hover {
-  background: #f9f9f9;
-  color: #000;
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .nav-item.active {
-  background: #000;
-  color: #fff;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
 }
 
 .main-content {
   flex: 1;
-  padding: 60px 80px;
-  background: #fff;
+  padding: 40px 60px;
 }
 
 .dashboard-header {
-  margin-bottom: 60px;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 32px;
+  margin-bottom: 48px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.25rem;
+  margin-top: 8px;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 16px;
-  background: #fafafa;
-  padding: 10px 20px;
-  border-radius: 100px;
+  gap: 12px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #f1f5f9;
 }
 
 .avatar {
-  background: #000;
-  color: #fff;
+  background: var(--primary);
+  color: white;
   font-weight: 700;
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+@media (max-width: 1024px) {
+  .sidebar { width: 80px; padding: 32px 12px; }
+  .sidebar-logo span { display: none; }
+  .nav-item span { display: none; }
+  .main-content { padding: 32px; }
 }

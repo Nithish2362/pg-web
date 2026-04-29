@@ -1,41 +1,91 @@
-.complaint-form {
-  max-width: 800px;
+.complaint-form-card {
+  padding: 32px;
+  background: white;
+  border-radius: var(--radius-lg);
+  margin-bottom: 48px;
 }
 
 .complaint-textarea {
   width: 100%;
-  min-height: 200px;
-  padding: 32px;
-  background: #fafafa;
-  border: 1px solid #f0f0f0;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid #f1f5f9;
+  background: #f8fafc;
   font-family: inherit;
-  font-size: 1.1rem;
-  outline: none;
+  font-size: 1rem;
+  margin-bottom: 24px;
   transition: var(--transition);
-  margin-bottom: 32px;
+  resize: vertical;
 }
 
 .complaint-textarea:focus {
-  background: #fff;
-  border-color: #000;
-  box-shadow: var(--shadow-lg);
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
 }
 
 .complaint-card {
-  padding: 40px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 24px;
+  background: white;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   transition: var(--transition);
 }
 
 .complaint-card:hover {
-  background: #fafafa;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.complaint-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.complaint-date {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.complaint-issue {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  font-weight: 500;
 }
 
 .admin-remark-box {
-  margin-top: 24px;
-  padding: 32px;
-  background: #fdfdfd;
-  border-left: 4px solid #000;
-  border-radius: 4px 16px 16px 4px;
+  background: var(--primary-light);
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+.admin-remark-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.admin-remark-content {
+  font-size: 0.9rem;
+  color: var(--primary-hover);
+  font-style: italic;
 }

@@ -28,39 +28,39 @@ const PaymentHistory = () => {
         Payment History
       </h2>
 
-      <div className="log-table-container premium-card">
+      <div className="premium-table-container animate-reveal">
         {loading ? (
           <div style={{ textAlign: 'center', padding: '60px' }}>Loading transactions...</div>
         ) : payments.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-dim)' }}>
-            No payment history found.
+          <div style={{ textAlign: 'center', padding: '80px', color: 'var(--text-dim)' }}>
+            <div style={{ marginBottom: '16px', opacity: 0.5 }}><CreditCard size={48} style={{ margin: '0 auto' }} /></div>
+            <p style={{ fontWeight: 600 }}>No payment history found.</p>
           </div>
         ) : (
           <table className="premium-table">
             <thead>
               <tr>
-                <th>Receipt #</th>
+                <th>Receipt ID</th>
                 <th>Amount</th>
-                <th>Month / Year</th>
-                <th>Payment Date</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
               {payments.map((p) => (
                 <tr key={p.id}>
-                  <td><span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>#{p.id}</span></td>
-                  <td style={{ fontWeight: '700', fontSize: '1.1rem' }}>₹{p.amount}</td>
+                  <td><span style={{ fontWeight: 700, color: 'var(--primary)', fontSize: '0.85rem' }}>#{p.id.substring(0, 8)}</span></td>
+                  <td style={{ fontWeight: '800', fontSize: '1rem', color: 'var(--text-main)' }}>₹{p.amount}</td>
                   <td>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
                       <Calendar size={14} className="text-primary" />
-                      {p.paymentMonth} {p.paymentYear}
+                      Rent: {p.paymentMonth} {p.paymentYear}
                     </div>
                   </td>
-                  <td style={{ color: 'var(--text-muted)' }}>{p.paymentDate}</td>
+                  <td style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{p.paymentDate}</td>
                   <td>
-                    <span className={`payment-status-pill pay-${p.status}`}>
-                      <ArrowUpRight size={12} style={{ display: 'inline', marginRight: '4px' }} />
+                    <span className={`status-badge status-${p.status}`}>
                       {p.status}
                     </span>
                   </td>

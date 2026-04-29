@@ -89,8 +89,7 @@ const Visitors = () => {
         <button
           type="submit"
           disabled={loading}
-          className="btn-primary"
-          style={{ width: 'auto', padding: '14px 32px' }}
+          className="btn-premium"
         >
           {loading ? "Requesting..." : <><Send size={18} /> Submit Request</>}
         </button>

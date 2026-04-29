@@ -57,8 +57,7 @@ const Complaints = () => {
         <button
           type="submit"
           disabled={loading}
-          className="btn-primary"
-          style={{ width: 'auto', padding: '14px 32px' }}
+          className="btn-premium"
         >
           {loading ? "Submitting..." : <><Send size={18} /> Submit Complaint</>}
         </button>
@@ -69,7 +68,7 @@ const Complaints = () => {
           <History size={20} className="text-primary" />
           Complaint History
         </h3>
-        
+
         {complaints.length === 0 ? (
           <div className="premium-card" style={{ textAlign: 'center', padding: '40px', color: 'var(--text-dim)' }}>
             No complaints recorded yet.
@@ -87,9 +86,9 @@ const Complaints = () => {
                     {c.status.replace('_', ' ')}
                   </span>
                 </div>
-                
+
                 <p className="complaint-issue">{c.issue}</p>
-                
+
                 {c.adminRemark && (
                   <div className="admin-remark-box">
                     <span className="admin-remark-label">Management Response</span>

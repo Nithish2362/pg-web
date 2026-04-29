@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogIn, ArrowRight } from 'lucide-react';
+import { LogIn, ArrowRight, Home, Sparkles } from 'lucide-react';
 import { login } from '../api/api';
 import './Login.css';
 
@@ -23,19 +23,21 @@ const Login = () => {
       localStorage.setItem('agent_userId', userId);
       navigate('/dashboard');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
+      setError('Oops! Credentials don\'t match our records.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="login-container reveal">
-      <div className="login-card">
+    <div className="login-container">
+      <div className="login-card animate-reveal">
         <div className="login-header">
-          <div className="lux-logo-mark">STAYPRO.</div>
-          <h1 style={{ fontSize: '2rem', fontWeight: '800' }}>Welcome Resident.</h1>
-          <p style={{ color: '#999' }}>Please authenticate to access your portal.</p>
+          <div className="login-logo">
+            <Home size={28} />
+          </div>
+          <h1 style={{ fontSize: '2.25rem', color: 'var(--text-main)' }}>Welcome Home.</h1>
+          <p className="text-muted">Sign in to your Happy Stay portal</p>
         </div>
 
         {error && <div className="error-banner">{error}</div>}
@@ -50,6 +52,7 @@ const Login = () => {
               value={pgNumber}
               onChange={(e) => setPgNumber(e.target.value)}
               disabled={loading}
+              required
             />
           </div>
           
@@ -62,17 +65,20 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
+              required
             />
           </div>
 
-          <button type="submit" className="btn-premium" style={{ width: '100%', marginTop: '32px' }} disabled={loading}>
-            {loading ? 'Authenticating...' : <><LogIn size={18} /> Authenticate</>}
+          <button type="submit" className="btn-premium" style={{ width: '100%', marginTop: '16px' }} disabled={loading}>
+            {loading ? 'Signing in...' : <><LogIn size={18} /> Sign In</>}
           </button>
         </form>
 
-        <p style={{ marginTop: '40px', color: '#ccc', fontSize: '0.8rem' }}>
-          By authenticating, you agree to our terms of residence.
-        </p>
+        <div style={{ marginTop: '32px', textAlign: 'center' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            New resident? <span className="text-primary" style={{ fontWeight: 700, cursor: 'pointer' }}>Contact Management</span>
+          </p>
+        </div>
       </div>
     </div>
   );
